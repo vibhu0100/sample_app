@@ -1,0 +1,33 @@
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<html>
+<div>
+<%if micropost.user.picture?%>
+
+<img src="<%=micropost.user.picture.url%>" class="img-circle" width="50" height="50">
+<%else%>
+<img src="<%=img_url(micropost.user)%>" class="img-circle" width="50" height="50">
+<%end%>
+<span class="user"><%= link_to micropost.user.name, micropost.user %></span>
+<br/>
+<% if micropost.picture?%>
+<img src="<%= micropost.picture.url%>" class="img-thumbnail" width="500" height="500" style="width:500px; height:500px">
+<% end%>
+<span class="content"> <h3><%= micropost.content %></h3></span>
+<br/>
+<span class="timestamp" style="color:grey">
+Posted <%= time_ago_in_words(micropost.created_at) %> ago.
+<% if current_user?(micropost.user) %>
+<%= link_to "delete", micropost, method: :delete, data: {confirm: "You sure?"} %>
+<% end %>
+</span>
+
+<hr style="width:95%">
+
+
+</div>
+</html>

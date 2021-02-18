@@ -1,0 +1,43 @@
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<html>
+<% provide(:title, "Home") %>
+<% if logged_in? %>
+<div class="row">
+<div class="col-sm-4">
+<div align="center" style="margin-left:100px">
+<aside>
+<section class="user_info">
+<%= render 'shared/user_info' %>
+</section>
+<section class="stats">
+<div align="left">
+<%= render 'shared/stats' %>
+</div>
+</section>
+
+<section class="micropost_form">
+<%= render 'shared/micropost_form' %>
+</section>
+
+</aside>
+</div></div>
+
+<div class="col-sm-8">
+<h2> <b>Feed</b></h2>
+<%= render 'shared/feed' %>
+
+</div>
+</div>
+
+<% else %>
+
+<%= render 'shared/homes' %>
+
+<% end %>
+</div>
+</html>
+

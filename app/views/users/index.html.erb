@@ -1,0 +1,21 @@
+<% provide(:title, 'All users') %>
+<h1>All users</h1>
+<ul class="users" style="list-style: none;
+margin: 0;">
+<% @users.each do |user| %>
+<li style="overflow: auto;
+padding: 10px 0;">
+<%if user.picture?%>
+<img src="<%=user.picture.url%>" class="img-circle" width="50" height="50">
+<%else%>
+<img src="<%=img_url(user)%>" class="img-circle" width="50" height="50">
+<%end%>
+<%= link_to user.name, user %>
+<%if current_user.admin? && !current_user?(user) %>
+|<%=  link_to "delete" , user, method: :delete, data:  {confirm: "you sure?"} %>
+<% end%>
+<hr/>
+</li>
+
+<% end %>
+</ul>
